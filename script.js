@@ -32,7 +32,7 @@ document.getElementById("carBookingForm").addEventListener("submit", function(ev
     %0ASpecial Requests: ${requests}`;
 
     // Redirect to WhatsApp
-    window.open(`https://wa.me/YOUR_WHATSAPP_NUMBER?text=${message}`, '_blank');
+    window.open(`https://wa.me/+2348123646242?text=${message}`, '_blank');
 });
 
 // Initialize Google Map
