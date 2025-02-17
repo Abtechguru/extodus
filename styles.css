@@ -1,0 +1,344 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #adadd7;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #192a56;
+    padding: 10px 20px;
+}
+
+header h1 {
+    color: white;
+    font-size: 24px;
+}
+
+header .navbar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header .navbar a {
+    font-size: 1.0rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    color:#666;
+}
+
+header .navbar a:active,
+header .navbar a:hover {
+    color: #ffffff;
+    background: #192a56;
+  }
+  
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carousel-image {
+    width: 100%;
+    display: none;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-image.active {
+    display: block;
+}
+/* Fleets Section */
+.fleets {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.fleet-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.fleet-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.fleet-card:hover {
+    transform: scale(1.05);
+}
+
+.fleet-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.details-button {
+    display: inline-block;
+    background-color: #192a56;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.details-button:hover {
+    background-color: dark#192a56;
+}
+
+/* Car Details Section */
+.carDetails {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 20px;
+}
+
+.car-image {
+    width: 50%;
+    border-radius: 10px;
+}
+
+.car-info {
+    width: 50%;
+}
+
+.car-info h2 {
+    color: #192a56;
+}
+
+.car-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.car-info ul li {
+    margin: 5px 0;
+}
+
+.price {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.book-now-button {
+    display: inline-block;
+    background-color: #192a56;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.book-now-button:hover {
+    background-color: dark#192a56;
+}
+
+.dots {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .dot:hover {
+    background-color: #717171;
+  }
+  
+  .dot.active {
+    background-color: dark#192a56;
+  }
+  
+
+/* Booking Form Section */
+.booking-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.booking-form h2 {
+    color: #192a56;
+}
+
+.booking-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.booking-form button {
+    background-color: #192a56;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.booking-form button:hover {
+    background-color: dark#192a56;
+}
+
+/* Google Map Section */
+.google-map {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.google-map h2 {
+    color: #192a56;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #192a56;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.footer-section a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    text-decoration: none;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 300px;
+}
+
+.newsletter-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #192a56;
+    color: #fff;
+    cursor: pointer;
+}
+
+.newsletter-form button:hover {
+    background-color: #777;
+}
+
+.footer-container {
+  grid-template-columns: 1fr;
+  padding: 2rem 3%;
+}
+.footer-section h3 {
+  font-size: 1.6rem;
+}
+.footer-section p,
+.footer-section ul li {
+  font-size: 1.2rem;
+}
+.social-icons {
+  justify-content: center;
+}
+.social-icons a {
+  font-size: 1.5rem;
+}
+.footer-bottom {
+  padding: 0.8rem;
+  font-size: 1rem;
+}
