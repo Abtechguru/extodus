@@ -233,7 +233,29 @@ header .navbar a:hover {
 .booking-form button:hover {
     background-color: dark#192a56;
 }
+/* Owner section */
+.owners {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
 
+.owners-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.owners-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
 /* Google Map Section */
 .google-map {
     text-align: center;
