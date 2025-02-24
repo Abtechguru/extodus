@@ -240,7 +240,7 @@ header .navbar a:hover {
     background-color: #f5f5dc;
   }
   
-  .owner-carousel .chef-heading {
+  .owner-carousel .owner-heading {
     color: var(--black);
     font-size: 3rem;
     padding-bottom: 2rem;
@@ -270,7 +270,44 @@ header .navbar a:hover {
   .owner-stars {
     margin-bottom: 1rem;
   }
+ /* updates section*/
+.owner-carousel {
+    padding: 2rem 9%;
+    text-align: center;
+    background-color: #f5f5dc;
+  }
   
+  .updates-carousel .updates-heading {
+    color: var(--black);
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+  }
+ 
+  .updates-user {
+    background: #ffffff;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .updates-user img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  
+  .updates-user-info h3 {
+    color: var(--black);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .updates-stars {
+    margin-bottom: 1rem;
+  }
+
 /* Google Map Section */
 .google-map {
     text-align: center;
