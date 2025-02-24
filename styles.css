@@ -233,29 +233,44 @@ header .navbar a:hover {
 .booking-form button:hover {
     background-color: dark#192a56;
 }
-/* Owner section */
-.owners {
+/* owner Section */
+.owner-carousel {
+    padding: 2rem 9%;
     text-align: center;
-    padding: 20px;
-    background-color: #fff;
-}
-
-.owners-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.owners-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    background-color: #f5f5dc;
+  }
+  
+  .owner-carousel .chef-heading {
+    color: var(--black);
+    font-size: 3rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+  }
+ 
+  .owner-user {
+    background: #ffffff;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .owner-user img {
     width: 300px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  
+  .owner-user-info h3 {
+    color: var(--black);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .owner-stars {
+    margin-bottom: 1rem;
+  }
+  
 /* Google Map Section */
 .google-map {
     text-align: center;
@@ -273,44 +288,7 @@ header .navbar a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-/* Chefs Section */
-.chef-carousel {
-    padding: 2rem 9%;
-    text-align: center;
-    background-color: #f5f5dc;
-  }
-  
-  .chef-carousel .chef-heading {
-    color: var(--black);
-    font-size: 3rem;
-    padding-bottom: 2rem;
-    text-transform: uppercase;
-  }
- 
-  .chef-user {
-    background: #ffffff;
-    border-radius: 0.5rem;
-    text-align: center;
-  }
-  
-  .chef-user img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-  }
-  
-  .chef-user-info h3 {
-    color: var(--black);
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .chef-stars {
-    margin-bottom: 1rem;
-  }
-  
+
 /* Footer Styling */
 .footer {
     background-color: #192a56;
