@@ -280,42 +280,16 @@ header .navbar a:hover {
     background-color: #f5f5dc;
   }
   
-  .chef-carousel .chef-sub-heading {
-    color: var(--green);
-    font-size: 2rem;
-    padding-top: 1rem;
-  }
-  
   .chef-carousel .chef-heading {
     color: var(--black);
     font-size: 3rem;
     padding-bottom: 2rem;
     text-transform: uppercase;
   }
-  
-  .chef-slider {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .chef-wrapper {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .chef-slide {
-    min-width: 100%;
-    padding: 1rem;
-  }
-  
+ 
   .chef-user {
     background: #ffffff;
     border-radius: 0.5rem;
-    border: 0.1rem solid rgba(0, 0, 0, 0.2);
-    box-shadow: var(--box-shadow);
-    padding: 2rem;
     text-align: center;
   }
   
@@ -337,62 +311,6 @@ header .navbar a:hover {
     margin-bottom: 1rem;
   }
   
-  .chef-stars .fas {
-    color: var(--green);
-    font-size: 1.5rem;
-  }
-  
-  .chef-prev,
-  .chef-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--green);
-    color: white;
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    z-index: 10;
-  }
-  
-  .chef-prev {
-    left: -20px;
-  }
-  
-  .chef-next {
-    right: -20px;
-  }
-  
-  .chef-dots {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .chef-dot {
-    cursor: pointer;
-    height: 10px;
-    width: 10px;
-    margin: 0 2px;
-    background-color: #bbbbbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-  
-  .chef-slide .active {
-    background-color: var(--green);
-  }
-  
-  .chef-dot:hover {
-    background-color: #717171;
-  }
-  
-  .chef-slide p {
-    font-size: 1.6rem;
-    line-height: 1.8;
-  }
-  
-
 /* Footer Styling */
 .footer {
     background-color: #192a56;
