@@ -16,27 +16,6 @@ header {
     background-color: #192a56;
     padding: 1rem 0;
 }
-/* Mobile Styles */
-@media (max-width: 600px) {
-    .content {
-        padding: 1rem;
-    }
-}
-
-/* Tablet Styles */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .content {
-        padding: 2rem;
-    }
-}
-
-/* Desktop Styles */
-@media (min-width: 1025px) {
-    .content {
-        padding: 3rem;
-    }
-}
-
 
 header h1 {
     color: white;
@@ -49,18 +28,18 @@ header .navbar {
 }
 
 header .navbar a {
-    font-size: 1.0rem;
+    font-size: 1rem;
     border-radius: 0.5rem;
     padding: 0.5rem 1.5rem;
-    color:#666;
+    color: #666;
 }
 
 header .navbar a:active,
 header .navbar a:hover {
     color: #ffffff;
     background: #192a56;
-  }
-  
+}
+
 .logo {
     height: 50px;
     width: auto;
@@ -85,6 +64,7 @@ header .navbar a:hover {
 .carousel-image.active {
     display: block;
 }
+
 /* Fleets Section */
 .fleets {
     text-align: center;
@@ -129,7 +109,7 @@ header .navbar a:hover {
 }
 
 .details-button:hover {
-    background-color: dark#192a56;
+    background-color: #0e1e3a;
 }
 
 /* Car Details Section */
@@ -184,15 +164,16 @@ header .navbar a:hover {
 }
 
 .book-now-button:hover {
-    background-color: dark#192a56;
+    background-color: #0e1e3a;
 }
 
+/* Dots */
 .dots {
     text-align: center;
     margin-top: 10px;
-  }
-  
-  .dot {
+}
+
+.dot {
     cursor: pointer;
     height: 10px;
     width: 10px;
@@ -201,16 +182,12 @@ header .navbar a:hover {
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
-  }
-  
-  .dot:hover {
+}
+
+.dot:hover,
+.dot.active {
     background-color: #717171;
-  }
-  
-  .dot.active {
-    background-color: dark#192a56;
-  }
-  
+}
 
 /* Booking Form Section */
 .booking-form {
@@ -253,82 +230,84 @@ header .navbar a:hover {
 }
 
 .booking-form button:hover {
-    background-color: dark#192a56;
+    background-color: #0e1e3a;
 }
-/* owner Section */
+
+/* Owner Section */
 .owner-carousel {
     padding: 2rem 9%;
     text-align: center;
     background-color: #f5f5dc;
-  }
-  
-  .owner-carousel .owner-heading {
+}
+
+.owner-carousel .owner-heading {
     color: var(--black);
     font-size: 3rem;
     padding-bottom: 2rem;
     text-transform: uppercase;
-  }
- 
-  .owner-user {
+}
+
+.owner-user {
     background: #ffffff;
     border-radius: 0.5rem;
     text-align: center;
-  }
-  
-  .owner-user img {
+}
+
+.owner-user img {
     width: 300px;
     height: 300px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
-  }
-  
-  .owner-user-info h3 {
+}
+
+.owner-user-info h3 {
     color: var(--black);
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-  }
-  
-  .owner-stars {
+}
+
+.owner-stars {
     margin-bottom: 1rem;
-  }
- /* updates section*/
-.owner-carousel {
+}
+
+/* Updates Section */
+.updates-carousel {
     padding: 2rem 9%;
     text-align: center;
     background-color: #f5f5dc;
-  }
-  
-  .updates-carousel .updates-heading {
+}
+
+.updates-carousel .updates-heading {
     color: var(--black);
     font-size: 3rem;
     padding-bottom: 2rem;
     text-transform: uppercase;
-  }
- 
-  .updates-user {
+}
+
+.updates-user {
     background: #ffffff;
     border-radius: 0.5rem;
     text-align: center;
-  }
-  
-  .updates-user img {
+}
+
+.updates-user img {
     width: 300px;
     height: 300px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
-  }
-  
-  .updates-user-info h3 {
+}
+
+.updates-user-info h3 {
     color: var(--black);
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-  }
-  
-  .updates-stars {
+}
+
+.updates-stars {
     margin-bottom: 1rem;
-  }
+}
 
 /* Google Map Section */
 .google-map {
@@ -369,12 +348,12 @@ header .navbar a:hover {
 }
 
 .footer-section h3 {
-    font-size: 15px;
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
 .footer-section p {
-    font-size: 14px;
+    font-size: 1.2rem;
     margin-bottom: 5px;
 }
 
@@ -417,24 +396,57 @@ header .navbar a:hover {
     background-color: #777;
 }
 
-.footer-container {
-  grid-template-columns: 1fr;
-  padding: 2rem 3%;
-}
-.footer-section h3 {
-  font-size: 1.6rem;
-}
-.footer-section p,
-.footer-section ul li {
-  font-size: 1.2rem;
-}
-.social-icons {
-  justify-content: center;
-}
-.social-icons a {
-  font-size: 1.5rem;
-}
 .footer-bottom {
-  padding: 0.8rem;
-  font-size: 1rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .carDetails {
+        flex-direction: column;
+    }
+
+    .car-image,
+    .car-info {
+        width: 100%;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .content {
+        padding: 2rem;
+    }
+
+    .carDetails {
+        flex-direction: column;
+    }
+
+    .car-image,
+    .car-info {
+        width: 100%;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+    .content {
+        padding: 3rem;
+    }
+
+    .carDetails {
+        flex-direction: row;
+    }
+
+    .car-image,
+    .car-info {
+        width: 50%;
+    }
 }
