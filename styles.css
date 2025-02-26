@@ -11,33 +11,33 @@ body {
 /* Header */
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #192a56;
-    padding: 1rem 0;
+    padding: 1rem 10%;
 }
 
 header h1 {
     color: white;
-    font-size: 24px;
+    font-size: 2rem;
 }
 
 header .navbar {
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 
 header .navbar a {
     font-size: 1rem;
     border-radius: 0.5rem;
-    padding: 0.5rem 1.5rem;
-    color: #666;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
 }
 
-header .navbar a:active,
 header .navbar a:hover {
-    color: #ffffff;
-    background: #192a56;
+    background-color: #0e1e3a;
 }
 
 .logo {
@@ -122,16 +122,17 @@ header .navbar a:hover {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
 .car-image {
-    width: 50%;
+    flex: 1 1 50%;
     border-radius: 10px;
 }
 
 .car-info {
-    width: 50%;
+    flex: 1 1 50%;
 }
 
 .car-info h2 {
@@ -148,7 +149,7 @@ header .navbar a:hover {
 }
 
 .price {
-    font-size: 20px;
+    font-size: 1.5rem;
     color: #333;
     margin: 10px 0;
 }
@@ -405,8 +406,9 @@ header .navbar a:hover {
 
 /* Mobile Styles */
 @media (max-width: 600px) {
-    .content {
-        padding: 1rem;
+    header {
+        flex-direction: column;
+        padding: 1rem 5%;
     }
 
     .carDetails {
@@ -416,13 +418,21 @@ header .navbar a:hover {
     .car-image,
     .car-info {
         width: 100%;
+    }
+
+    .fleet-card {
+        width: 100%;
+    }
+
+    .booking-form {
+        padding: 15px;
     }
 }
 
 /* Tablet Styles */
 @media (min-width: 601px) and (max-width: 1024px) {
-    .content {
-        padding: 2rem;
+    header {
+        padding: 1rem 7%;
     }
 
     .carDetails {
@@ -433,12 +443,20 @@ header .navbar a:hover {
     .car-info {
         width: 100%;
     }
+
+    .fleet-card {
+        width: 45%;
+    }
+
+    .booking-form {
+        padding: 20px;
+    }
 }
 
 /* Desktop Styles */
 @media (min-width: 1025px) {
-    .content {
-        padding: 3rem;
+    header {
+        padding: 1rem 10%;
     }
 
     .carDetails {
@@ -448,5 +466,13 @@ header .navbar a:hover {
     .car-image,
     .car-info {
         width: 50%;
+    }
+
+    .fleet-card {
+        width: 300px;
+    }
+
+    .booking-form {
+        padding: 30px;
     }
 }
