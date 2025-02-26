@@ -5,6 +5,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Header */
@@ -13,8 +14,29 @@ header {
     justify-content: center;
     align-items: center;
     background-color: #192a56;
-    padding: 10px 20px;
+    padding: 1rem 0;
 }
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .content {
+        padding: 1rem;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .content {
+        padding: 2rem;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+    .content {
+        padding: 3rem;
+    }
+}
+
 
 header h1 {
     color: white;
