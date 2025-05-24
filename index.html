@@ -320,18 +320,73 @@
     </ul>
 </section>
 
-    <!-- Google Map Section -->
-    <section class="google-map">
-      <h2>Our Location</h2>
-      <div id="map"></div>
-    </section>
+  <section id="area-we-cover" style="padding: 20px;">
+  <h2 style="text-align: center; color: orange;">Area We Cover</h2>
+  <div id="map" style="height: 500px; width: 100%; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
 
-    <!-- Google Maps Script -->
-    <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"
-    ></script>
+  <script>
+    function initMap() {
+      const locations = [
+        { name: "Lagos", position: { lat: 6.5244, lng: 3.3792 } },
+        { name: "Ibadan", position: { lat: 7.3775, lng: 3.9470 } },
+        { name: "Abuja", position: { lat: 9.0579, lng: 7.4951 } },
+        { name: "Port Harcourt", position: { lat: 4.8156, lng: 7.0498 } },
+        { name: "Kano", position: { lat: 12.0022, lng: 8.5919 } },
+        { name: "Benin City", position: { lat: 6.3382, lng: 5.6258 } },
+        { name: "Enugu", position: { lat: 6.5243, lng: 7.5086 } },
+      ];
 
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 6,
+        center: { lat: 8.5, lng: 7.5 }, // Nigeria's center
+        styles: [
+          {
+            featureType: "poi",
+            stylers: [{ visibility: "off" }],
+          },
+          {
+            featureType: "transit",
+            stylers: [{ visibility: "off" }],
+          },
+        ],
+      });
+
+      locations.forEach(loc => {
+        // Marker
+        const marker = new google.maps.Marker({
+          position: loc.position,
+          map: map,
+          title: `EXTODUS covers ${loc.name}`,
+        });
+
+        // Info Window
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<strong>${loc.name}</strong><br/>EXTODUS provides services here.`,
+        });
+
+        marker.addListener("click", () => {
+          infoWindow.open(map, marker);
+        });
+
+        // Circle (radius: 40km)
+        new google.maps.Circle({
+          strokeColor: "#FF8C00",
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: "#FFA500",
+          fillOpacity: 0.25,
+          map,
+          center: loc.position,
+          radius: 40000, // in meters (40km radius)
+        });
+      });
+    }
+  </script>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+  </script>
+</section>
 
     <!--Footer-->
     <footer class="footer">
