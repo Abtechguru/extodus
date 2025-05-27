@@ -245,21 +245,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// ========== Google Maps API Loader ==========
-function loadGoogleMapAPI(callback) {
-    if (window.google && window.google.maps) {
-        callback();
-        return;
-    }
-    const script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=" + callback.name;
-    script.async = true;
-    window[callback.name] = callback;
-    document.body.appendChild(script);
+// ========== Google Maps Inline Embed ==========
+/**
+ * Replaces the Google Maps API loader with an inline iframe embed.
+ * Usage: Call embedGoogleMap with a container selector/id and a location string or coordinates.
+ * Example: embedGoogleMap('#map-container', 'New York, NY');
+ */
+function embedGoogleMap(containerSelector, location, options = {}) {
+    const container = typeof containerSelector === 'string' ? document.querySelector(containerSelector) : containerSelector;
+    if (!container) return;
+    // Default options for width, height, zoom, etc.
+    const width = options.width || "100%";
+    const height = options.height || "400";
+    const zoom = options.zoom || 14;
+    // URL encode the location
+    const loc = encodeURIComponent(location);
+    const src = `https://www.google.com/maps?q=${loc}&z=${zoom}&output=embed`;
+    // Clean previous map if any
+    container.innerHTML = '';
+    // Create iframe
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('src', src);
+    iframe.setAttribute('width', width);
+    iframe.setAttribute('height', height);
+    iframe.setAttribute('style', 'border:0;');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('loading', 'lazy');
+    iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+    container.appendChild(iframe);
 }
-
-// If your HTML loads the Google Maps API via the <script> tag with a callback=initMap, this is not needed.
-// Replace 'YOUR_API_KEY' above with your actual key for production use.
 
 // ========== Accessibility Improvements ==========
 (function enhanceAccessibility() {
