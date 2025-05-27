@@ -14,7 +14,108 @@
     --muted: #7a869a;
     --border: #eaeaea;
     --shadow: 0 4px 24px rgba(16, 55, 92, 0.06);
+  --font-main: 'Poppins', 'Montserrat', Arial, sans-serif;
+  --text: #222;
+}
 
+/* Dark Theme Variables */
+.dark-mode {
+  --primary: #79a4d2;
+  --primary-light: #b1c9e6;
+  --secondary: #ffd166;
+  --secondary-dark: #e0b200;
+  --accent: #00b894;
+  --danger: #ff6f61;
+  --bg: #181c20;
+  --card: #23272c;
+  --muted: #b5bdca;
+  --border: #38404a;
+  --shadow: 0 4px 16px rgba(0,0,0, 0.28);
+  --font-main: 'Poppins', 'Montserrat', Arial, sans-serif;
+  --text: #e8eaed;
+}
+
+body {
+  font-family: var(--font-main);
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Responsive Typography */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  .header-container, .container {
+    max-width: 98vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-container, .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 2vw;
+  }
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+  .carousel-caption {
+    max-width: 90vw;
+    left: 2vw;
+    right: 2vw;
+    padding: 1.2rem 1.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .header-container {
+    flex-direction: column;
+    padding: 0.5rem 1vw;
+  }
+  .logo {
+    height: 38px;
+    width: 38px;
+  }
+  .section-title {
+    font-size: 1.2rem;
+  }
+  .carousel-caption h2 {
+    font-size: 1.2rem;
+  }
+  .carousel-caption {
+    padding: 1rem;
+  }
+  .quick-booking, .booking-section, .fleet-card, .service-card, .feature-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .header-container {
+    padding: 0.2rem 0.5rem;
+  }
+  .navbar {
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+  }
+  .carousel-caption {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+  .section-title, .carousel-caption h2 {
+    font-size: 1rem;
+  }
+}
+    
     --font-main: 'Poppins', 'Montserrat', Arial, sans-serif;
 }
 
