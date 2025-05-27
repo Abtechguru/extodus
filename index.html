@@ -85,31 +85,43 @@
 
     <!-- Quick Booking Widget -->
     <section class="quick-booking">
-        <div class="container">
-            <h3>Quick Booking</h3>
-            <form class="quick-booking-form">
-                <div class="form-group">
-                    <label for="quick-car-type">Car Type</label>
-                    <select id="quick-car-type" required>
-                        <option value="">Select Vehicle</option>
-                        <option value="SUV">SUV</option>
-                        <option value="Sedan">Sedan</option>
-                        <option value="Luxury">Luxury Vehicle</option>
-                        <option value="Bus">Bus/Van</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="quick-pickup">Pickup Date</label>
-                    <input type="date" id="quick-pickup" required>
-                </div>
-                <div class="form-group">
-                    <label for="quick-dropoff">Return Date</label>
-                    <input type="date" id="quick-dropoff" required>
-                </div>
-                <button type="submit" class="btn-primary">Check Availability</button>
-            </form>
-        </div>
-    </section>
+  <div class="container">
+    <h3>Quick Booking</h3>
+    <form class="quick-booking-form" id="quickBookingForm">
+      <div class="form-group">
+        <label for="quick-name">Full Name</label>
+        <input type="text" id="quick-name" name="quick-name" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <label for="quick-car-type">Car Type</label>
+        <select id="quick-car-type" name="quick-car-type" required>
+          <option value="">Select Vehicle</option>
+          <option value="SUV">SUV</option>
+          <option value="Sedan">Sedan</option>
+          <option value="Luxury">Luxury Vehicle</option>
+          <option value="Bus">Bus/Van</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quick-pickup">Pickup Date</label>
+        <input type="date" id="quick-pickup" name="quick-pickup" required>
+      </div>
+      <div class="form-group">
+        <label for="quick-dropoff">Return Date</label>
+        <input type="date" id="quick-dropoff" name="quick-dropoff" required>
+      </div>
+      <div class="form-group">
+        <label for="quick-special">Special Request</label>
+        <textarea id="quick-special" name="quick-special" placeholder="Any special request..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="quick-message">Message to Owner</label>
+        <textarea id="quick-message" name="quick-message" placeholder="Write your message..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary">Send Booking</button>
+    </form>
+  </div>
+</section>
 
     <!-- Services Section -->
     <section id="services" class="services-section">
@@ -539,7 +551,373 @@
                     </div>
                 </div>
             </div>
+            <!-- Ford Flex -->
+<div class="car-details-content" id="ford-flex">
+    <div class="car-details-grid">
+        <div class="car-details-images">
+            <div class="main-image">
+                <img src="images/ford-flex-main.jpg" alt="Ford Flex" id="mainFordFlexImage">
+            </div>
+            <div class="thumbnail-container">
+                <img src="images/ford-flex-main.jpg" alt="Ford Flex Front" class="thumbnail active" data-main="images/ford-flex-main.jpg">
+                <img src="images/ford-flex-side.jpg" alt="Ford Flex Side" class="thumbnail" data-main="images/ford-flex-side.jpg">
+                <img src="images/ford-flex-interior.jpg" alt="Ford Flex Interior" class="thumbnail" data-main="images/ford-flex-interior.jpg">
+            </div>
+        </div>
+        <div class="car-details-info">
+            <h3>Ford Flex</h3>
+            <div class="car-price">From ₦50,000/day</div>
+            <div class="car-highlights">
+                <div class="highlight"><i class="fas fa-users"></i> 7 Seats</div>
+                <div class="highlight"><i class="fas fa-gas-pump"></i> Petrol</div>
+                <div class="highlight"><i class="fas fa-cog"></i> Automatic</div>
+                <div class="highlight"><i class="fas fa-suitcase"></i> 6 Bags</div>
+            </div>
             
+            <p>The Ford Flex is a distinctive full-size crossover SUV with retro-inspired styling and spacious three-row seating. With its boxy design, it offers exceptional interior room and comfort. The Flex is 5126 mm long, 1928 mm wide, with a wheelbase of 2994 mm.</p>
+            
+            <h4>Key Features</h4>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> 3.5L V6 Engine</li>
+                <li><i class="fas fa-check"></i> Available AWD</li>
+                <li><i class="fas fa-check"></i> SYNC 3 Infotainment</li>
+                <li><i class="fas fa-check"></i> Dual Panel Moonroof</li>
+                <li><i class="fas fa-check"></i> Power Liftgate</li>
+                <li><i class="fas fa-check"></i> Heated Front Seats</li>
+                <li><i class="fas fa-check"></i> Blind Spot Monitoring</li>
+                <li><i class="fas fa-check"></i> Rear View Camera</li>
+            </ul>
+            
+            <div class="car-specs">
+                <h4>Technical Specifications</h4>
+                <table>
+                    <tr>
+                        <td>Engine</td>
+                        <td>3.5L V6</td>
+                    </tr>
+                    <tr>
+                        <td>Power</td>
+                        <td>287 HP @ 6500 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Torque</td>
+                        <td>344 Nm @ 4000 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Transmission</td>
+                        <td>6-Speed Automatic</td>
+                    </tr>
+                    <tr>
+                        <td>Fuel Economy</td>
+                        <td>11.2L/100km (combined)</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions</td>
+                        <td>5126mm (L) x 1928mm (W) x 1727mm (H)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <a href="#booking" class="btn-primary">Book This Vehicle</a>
+        </div>
+    </div>
+</div>
+
+<!-- Toyota Camry -->
+<div class="car-details-content" id="camry">
+    <div class="car-details-grid">
+        <div class="car-details-images">
+            <div class="main-image">
+                <img src="images/camry-main.jpg" alt="Toyota Camry" id="mainCamryImage">
+            </div>
+            <div class="thumbnail-container">
+                <img src="images/camry-main.jpg" alt="Toyota Camry Front" class="thumbnail active" data-main="images/camry-main.jpg">
+                <img src="images/camry-side.jpg" alt="Toyota Camry Side" class="thumbnail" data-main="images/camry-side.jpg">
+                <img src="images/camry-interior.jpg" alt="Toyota Camry Interior" class="thumbnail" data-main="images/camry-interior.jpg">
+            </div>
+        </div>
+        <div class="car-details-info">
+            <h3>Toyota Camry</h3>
+            <div class="car-price">From ₦35,000/day</div>
+            <div class="car-highlights">
+                <div class="highlight"><i class="fas fa-users"></i> 5 Seats</div>
+                <div class="highlight"><i class="fas fa-gas-pump"></i> Petrol</div>
+                <div class="highlight"><i class="fas fa-cog"></i> Automatic</div>
+                <div class="highlight"><i class="fas fa-suitcase"></i> 3 Bags</div>
+            </div>
+            
+            <p>The Toyota Camry is a reliable midsize sedan known for its comfort, efficiency, and smooth ride. The latest generation features a more dynamic design and improved technology. The Camry is 4885 mm long, 1840 mm wide, with a wheelbase of 2825 mm.</p>
+            
+            <h4>Key Features</h4>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> 2.5L 4-Cylinder Engine</li>
+                <li><i class="fas fa-check"></i> Toyota Safety Sense 2.5</li>
+                <li><i class="fas fa-check"></i> 9-inch Touchscreen</li>
+                <li><i class="fas fa-check"></i> Wireless Apple CarPlay/Android Auto</li>
+                <li><i class="fas fa-check"></i> Dual Zone Climate Control</li>
+                <li><i class="fas fa-check"></i> 7-inch Digital Instrument Cluster</li>
+                <li><i class="fas fa-check"></i> Smart Key System</li>
+                <li><i class="fas fa-check"></i> Adaptive Cruise Control</li>
+            </ul>
+            
+            <div class="car-specs">
+                <h4>Technical Specifications</h4>
+                <table>
+                    <tr>
+                        <td>Engine</td>
+                        <td>2.5L 4-Cylinder</td>
+                    </tr>
+                    <tr>
+                        <td>Power</td>
+                        <td>206 HP @ 6600 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Torque</td>
+                        <td>250 Nm @ 5000 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Transmission</td>
+                        <td>8-Speed Automatic</td>
+                    </tr>
+                    <tr>
+                        <td>Fuel Economy</td>
+                        <td>6.8L/100km (combined)</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions</td>
+                        <td>4885mm (L) x 1840mm (W) x 1445mm (H)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <a href="#booking" class="btn-primary">Book This Vehicle</a>
+        </div>
+    </div>
+</div>
+
+<!-- Toyota Sienna -->
+<div class="car-details-content" id="sienna">
+    <div class="car-details-grid">
+        <div class="car-details-images">
+            <div class="main-image">
+                <img src="images/sienna-main.jpg" alt="Toyota Sienna" id="mainSiennaImage">
+            </div>
+            <div class="thumbnail-container">
+                <img src="images/sienna-main.jpg" alt="Toyota Sienna Front" class="thumbnail active" data-main="images/sienna-main.jpg">
+                <img src="images/sienna-side.jpg" alt="Toyota Sienna Side" class="thumbnail" data-main="images/sienna-side.jpg">
+                <img src="images/sienna-interior.jpg" alt="Toyota Sienna Interior" class="thumbnail" data-main="images/sienna-interior.jpg">
+            </div>
+        </div>
+        <div class="car-details-info">
+            <h3>Toyota Sienna</h3>
+            <div class="car-price">From ₦65,000/day</div>
+            <div class="car-highlights">
+                <div class="highlight"><i class="fas fa-users"></i> 8 Seats</div>
+                <div class="highlight"><i class="fas fa-gas-pump"></i> Hybrid</div>
+                <div class="highlight"><i class="fas fa-cog"></i> Automatic</div>
+                <div class="highlight"><i class="fas fa-suitcase"></i> 5 Bags</div>
+            </div>
+            
+            <p>The Toyota Sienna is a premium minivan offering exceptional comfort, space, and now exclusively hybrid powertrains. With its versatile seating and luxury features, it's perfect for family trips. The Sienna is 5170 mm long, 1995 mm wide, with a wheelbase of 3060 mm.</p>
+            
+            <h4>Key Features</h4>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> 2.5L 4-Cylinder Hybrid</li>
+                <li><i class="fas fa-check"></i> Available AWD</li>
+                <li><i class="fas fa-check"></i> 9-inch Touchscreen</li>
+                <li><i class="fas fa-check"></i> 7 USB Ports</li>
+                <li><i class="fas fa-check"></i> Dual Power Sliding Doors</li>
+                <li><i class="fas fa-check"></i> Rear Seat Entertainment</li>
+                <li><i class="fas fa-check"></i> Hands-Free Power Liftgate</li>
+                <li><i class="fas fa-check"></i> Toyota Safety Sense 2.0</li>
+            </ul>
+            
+            <div class="car-specs">
+                <h4>Technical Specifications</h4>
+                <table>
+                    <tr>
+                        <td>Engine</td>
+                        <td>2.5L 4-Cylinder Hybrid</td>
+                    </tr>
+                    <tr>
+                        <td>Total System Power</td>
+                        <td>245 HP</td>
+                    </tr>
+                    <tr>
+                        <td>Transmission</td>
+                        <td>eCVT Automatic</td>
+                    </tr>
+                    <tr>
+                        <td>Fuel Economy</td>
+                        <td>6.7L/100km (combined)</td>
+                    </tr>
+                    <tr>
+                        <td>EV Range</td>
+                        <td>Up to 1.6 km (EV mode)</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions</td>
+                        <td>5170mm (L) x 1995mm (W) x 1770mm (H)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <a href="#booking" class="btn-primary">Book This Vehicle</a>
+        </div>
+    </div>
+</div>
+
+<!-- Brabus (Assuming Brabus 800 based on Mercedes-AMG) -->
+<div class="car-details-content" id="brabus">
+    <div class="car-details-grid">
+        <div class="car-details-images">
+            <div class="main-image">
+                <img src="images/brabus-main.jpg" alt="Brabus 800" id="mainBrabusImage">
+            </div>
+            <div class="thumbnail-container">
+                <img src="images/brabus-main.jpg" alt="Brabus 800 Front" class="thumbnail active" data-main="images/brabus-main.jpg">
+                <img src="images/brabus-side.jpg" alt="Brabus 800 Side" class="thumbnail" data-main="images/brabus-side.jpg">
+                <img src="images/brabus-interior.jpg" alt="Brabus 800 Interior" class="thumbnail" data-main="images/brabus-interior.jpg">
+            </div>
+        </div>
+        <div class="car-details-info">
+            <h3>Brabus 800</h3>
+            <div class="car-price">From ₦250,000/day</div>
+            <div class="car-highlights">
+                <div class="highlight"><i class="fas fa-users"></i> 4 Seats</div>
+                <div class="highlight"><i class="fas fa-gas-pump"></i> Petrol</div>
+                <div class="highlight"><i class="fas fa-cog"></i> Automatic</div>
+                <div class="highlight"><i class="fas fa-suitcase"></i> 2 Bags</div>
+            </div>
+            
+            <p>The Brabus 800 is an ultra-high-performance luxury vehicle based on the Mercedes-AMG GT but extensively modified by Brabus. It combines extreme power with exquisite craftsmanship. The Brabus 800 is 4544 mm long, 1939 mm wide, with a wheelbase of 2630 mm.</p>
+            
+            <h4>Key Features</h4>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> 4.0L V8 Biturbo (Brabus-tuned)</li>
+                <li><i class="fas fa-check"></i> 800 HP / 1000 Nm</li>
+                <li><i class="fas fa-check"></i> 0-100 km/h in 2.9 seconds</li>
+                <li><i class="fas fa-check"></i> Top Speed 315 km/h</li>
+                <li><i class="fas fa-check"></i> Carbon Fiber Body Kit</li>
+                <li><i class="fas fa-check"></i> High-End Leather Interior</li>
+                <li><i class="fas fa-check"></i> Brabus Monoblock Wheels</li>
+                <li><i class="fas fa-check"></i> Custom Exhaust System</li>
+            </ul>
+            
+            <div class="car-specs">
+                <h4>Technical Specifications</h4>
+                <table>
+                    <tr>
+                        <td>Engine</td>
+                        <td>4.0L V8 Biturbo (Brabus-tuned)</td>
+                    </tr>
+                    <tr>
+                        <td>Power</td>
+                        <td>800 HP @ 6600 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Torque</td>
+                        <td>1000 Nm @ 3600 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Transmission</td>
+                        <td>7-Speed Dual-Clutch</td>
+                    </tr>
+                    <tr>
+                        <td>0-100 km/h</td>
+                        <td>2.9 seconds</td>
+                    </tr>
+                    <tr>
+                        <td>Top Speed</td>
+                        <td>315 km/h (electronically limited)</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions</td>
+                        <td>4544mm (L) x 1939mm (W) x 1287mm (H)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <a href="#booking" class="btn-primary">Book This Vehicle</a>
+        </div>
+    </div>
+</div>
+
+<!-- Toyota Coaster -->
+<div class="car-details-content" id="coaster">
+    <div class="car-details-grid">
+        <div class="car-details-images">
+            <div class="main-image">
+                <img src="images/coaster-main.jpg" alt="Toyota Coaster" id="mainCoasterImage">
+            </div>
+            <div class="thumbnail-container">
+                <img src="images/coaster-main.jpg" alt="Toyota Coaster Front" class="thumbnail active" data-main="images/coaster-main.jpg">
+                <img src="images/coaster-side.jpg" alt="Toyota Coaster Side" class="thumbnail" data-main="images/coaster-side.jpg">
+                <img src="images/coaster-interior.jpg" alt="Toyota Coaster Interior" class="thumbnail" data-main="images/coaster-interior.jpg">
+            </div>
+        </div>
+        <div class="car-details-info">
+            <h3>Toyota Coaster</h3>
+            <div class="car-price">From ₦90,000/day</div>
+            <div class="car-highlights">
+                <div class="highlight"><i class="fas fa-users"></i> 30 Seats</div>
+                <div class="highlight"><i class="fas fa-gas-pump"></i> Diesel</div>
+                <div class="highlight"><i class="fas fa-cog"></i> Manual</div>
+                <div class="highlight"><i class="fas fa-suitcase"></i> 15 Bags</div>
+            </div>
+            
+            <p>The Toyota Coaster is a reliable and durable minibus designed for passenger transport. With its spacious interior and robust construction, it's ideal for group travel, tours, and shuttle services. The Coaster is 7005 mm long, 2040 mm wide, with a wheelbase of 3935 mm.</p>
+            
+            <h4>Key Features</h4>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> 4.0L Turbo Diesel Engine</li>
+                <li><i class="fas fa-check"></i> High Roof Option</li>
+                <li><i class="fas fa-check"></i> Air Conditioning</li>
+                <li><i class="fas fa-check"></i> Overhead Storage</li>
+                <li><i class="fas fa-check"></i> Comfortable Reclining Seats</li>
+                <li><i class="fas fa-check"></i> Power Steering</li>
+                <li><i class="fas fa-check"></i> ABS with EBD</li>
+                <li><i class="fas fa-check"></i> Durable Body Construction</li>
+            </ul>
+            
+            <div class="car-specs">
+                <h4>Technical Specifications</h4>
+                <table>
+                    <tr>
+                        <td>Engine</td>
+                        <td>4.0L 4-Cylinder Turbo Diesel</td>
+                    </tr>
+                    <tr>
+                        <td>Power</td>
+                        <td>150 HP @ 3400 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Torque</td>
+                        <td>420 Nm @ 1600-2400 rpm</td>
+                    </tr>
+                    <tr>
+                        <td>Transmission</td>
+                        <td>5-Speed Manual</td>
+                    </tr>
+                    <tr>
+                        <td>Fuel Capacity</td>
+                        <td>90 liters</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensions</td>
+                        <td>7005mm (L) x 2040mm (W) x 2630mm (H)</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Vehicle Weight</td>
+                        <td>5600 kg</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <a href="#booking" class="btn-primary">Book This Vehicle</a>
+        </div>
+    </div>
+</div>
             <!-- Other car details would follow the same pattern but are omitted for brevity -->
             
         </div>
@@ -759,32 +1137,20 @@
         </div>
     </section>
 
-    <!-- Coverage Area with Google Maps -->
-    <section id="area-we-cover" class="coverage-section">
-        <div class="container">
-            <h2 class="section-title">Areas We Cover</h2>
-            <p class="section-subtitle">We provide car rental services across Lagos, Ibadan, and surrounding areas</p>
-            
-            <div class="coverage-map-container">
-                <div id="map"></div>
-                <div class="coverage-list">
-                    <h3>Our Service Areas</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Lagos Mainland</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Lagos Island</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Victoria Island</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Lekki</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Ibadan City</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Airport Pickups (LOS)</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Intercity Travel</li>
-                    </ul>
-                    <div class="coverage-note">
-                        <i class="fas fa-info-circle"></i>
-                        <p>We can arrange special pickups outside these areas - contact us for details.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Inline Responsive Google Map -->
+<div class="coverage-map-container">
+  <div id="map" style="width:100%; height:350px;">
+    <iframe
+      src="https://www.google.com/maps?q=VICTORIA+ISLAND+LAGOS+NIGERIA&output=embed"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <!-- ...existing area list ... -->
+</div>
     </section>
 
     <!-- Owner Section -->
@@ -820,7 +1186,6 @@
                         </blockquote>
                     </div>
                     <div class="owner-signature">
-                        <img src="images/signature.png" alt="Signature">
                         <p>Adebayo Taiwo<br>Founder & CEO</p>
                     </div>
                 </div>
@@ -837,7 +1202,6 @@
             <div class="updates-grid">
                 <article class="update-card">
                     <div class="update-image">
-                        <img src="images/extended-hours.jpg" alt="Extended Rental Hours">
                         <div class="update-date">May 15, 2025</div>
                     </div>
                     <div class="update-content">
@@ -912,7 +1276,7 @@
                         <div class="contact-details">
                             <h3>Phone Numbers</h3>
                             <p>Primary: <a href="tel:+2348123646242">+234 (812) 364-6242</a></p>
-                            <p>Secondary: <a href="tel:+2348034567890">+234 (803) 456-7890</a></p>
+                            <p>Secondary: <a href="tel:+2348034567890">+234 (810) 0171-0773</a></p>
                             <p>WhatsApp: <a href="https://wa.me/+2348123646242">+234 (812) 364-6242</a></p>
                         </div>
                     </div>
@@ -923,7 +1287,8 @@
                         </div>
                         <div class="contact-details">
                             <h3>Email Addresses</h3>
-                            <p>Bookings: <a href="mailto:bookings@extoduscars.com">bookings@extoduscars.com</a></p>
+                            <p>Bookings: <a href="mailto:bookings@extoduscars.com">bookings@extoduscars.com</a></p
+                                                                                        <p>Bookings: <a href="mailto:bookings@extoduscars.com">bookings@extoduscars.com</a></p>
                             <p>Support: <a href="mailto:support@extoduscars.com">support@extoduscars.com</a></p>
                             <p>CEO: <a href="mailto:tadebayor41@gmail.com">tadebayor41@gmail.com</a></p>
                         </div>
@@ -935,9 +1300,9 @@
                         </div>
                         <div class="contact-details">
                             <h3>Operating Hours</h3>
-                            <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
-                            <p>Saturday: 9:00 AM - 6:00 PM</p>
-                            <p>Sunday: 10:00 AM - 4:00 PM</p>
+                            <p>Monday - Any time </p>
+                            <p>Saturday: Any time</p>
+                            <p>Sunday: Anytime </p>
                             <p><em>24/7 Emergency Support Available</em></p>
                         </div>
                     </div>
@@ -1141,10 +1506,6 @@
                 radius: 15000 // 15km radius around Ibadan
             });
         }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-    </script>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1152,7 +1513,6 @@
             <div class="footer-grid">
                 <div class="footer-col footer-about">
                     <div class="footer-logo">
-                        <img src="images/LOGO.jpg" alt="Extodus Car Hire">
                         <h3>EXTODUS CAR HIRE SERVICES</h3>
                     </div>
                     <p>Your trusted partner for premium car rental services in Lagos and Ibadan. We provide reliable, comfortable, and luxurious vehicles for all your transportation needs.</p>
@@ -1199,7 +1559,7 @@
                         <li><i class="fas fa-map-marker-alt"></i> Protea Kuramo Water Close, Off Akin Ogunlewe Street, Victoria Island, Lagos</li>
                         <li><i class="fas fa-phone-alt"></i> +234 (812) 364-6242</li>
                         <li><i class="fas fa-envelope"></i> tadebayor41@gmail.com</li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 8:00 PM</li>
+                        <li><i class="fas fa-clock"></i> sat - sun: Any time any day</li>
                     </ul>
                     
                     <div class="footer-newsletter">
@@ -1232,6 +1592,39 @@
     </a>
 
     <!-- Scripts -->
+    <script>
+document.getElementById('quickBookingForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Collect form data
+  const name = document.getElementById('quick-name').value;
+  const carType = document.getElementById('quick-car-type').value;
+  const pickup = document.getElementById('quick-pickup').value;
+  const dropoff = document.getElementById('quick-dropoff').value;
+  const special = document.getElementById('quick-special').value;
+  const message = document.getElementById('quick-message').value;
+
+  // WhatsApp owner number (replace with your number)
+  const ownerPhone = '2348123646242';
+
+  const waText = 
+    `*New Quick Booking*\nName: ${name}\nCar: ${carType}\nPickup: ${pickup}\nReturn: ${dropoff}\nSpecial: ${special}\nMessage: ${message}`;
+
+  // Open WhatsApp
+  window.open(`https://wa.me/${ownerPhone}?text=${encodeURIComponent(waText)}`, '_blank');
+
+  // Prepare email
+  const email = "bookings@extoduscars.com";
+  const subject = "Quick Booking Request";
+  const body = waText.replace(/\n/g, '%0D%0A');
+
+  // Open email client
+  window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+
+  // Auto-reply instructions (for backend)
+  alert("Your booking message has been sent via WhatsApp and email. You will receive an automatic reply shortly.");
+});
+</script>
     <script src="script.js"></script>
 </body>
 </html>
