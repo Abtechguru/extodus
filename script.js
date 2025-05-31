@@ -1,7 +1,7 @@
 // ===== Global Variables =====
 const ownerWhatsApp = '2348123646242';
 const ownerEmail = 'tadebayor41@gmail.com';
-const bookingEmail = 'bookings@extoduscars.com';
+const bookingEmail = 'tadebayor41@gmail.com';
 
 // ===== DOM Ready =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -259,7 +259,7 @@ function initForms() {
       handleBookingForm(this, 'quick');
     });
   }
-  
+  // main booking form 2 =======
   // Main Booking Form
   const mainBookingForm = document.getElementById('carBookingForm');
   if (mainBookingForm) {
