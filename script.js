@@ -259,7 +259,7 @@ function initForms() {
       handleBookingForm(this, 'quick');
     });
   }
-  // main booking form 2 =======
+  
   // Main Booking Form
   const mainBookingForm = document.getElementById('carBookingForm');
   if (mainBookingForm) {
@@ -301,6 +301,9 @@ function handleBookingForm(form, type) {
   // Add timestamp
   bookingData.timestamp = new Date().toISOString();
   
+  // Generate random rating for the vehicle
+  const randomRating = (Math.random() * 2 + 3).toFixed(1); // Random rating between 3.0 and 5.0
+  
   // Format message based on form type
   let whatsappMessage = '';
   let emailSubject = '';
@@ -310,6 +313,7 @@ function handleBookingForm(form, type) {
     whatsappMessage = `*New Quick Booking Request*\n\n` +
                      `*Name:* ${bookingData['quick-name']}\n` +
                      `*Vehicle Type:* ${bookingData['quick-car-type']}\n` +
+                     `*Rating:* ⭐ ${randomRating}/5.0\n` +
                      `*Pickup Date:* ${bookingData['quick-pickup']}\n` +
                      `*Return Date:* ${bookingData['quick-dropoff']}\n` +
                      `*Special Requests:* ${bookingData['quick-special'] || 'None'}\n` +
@@ -320,6 +324,7 @@ function handleBookingForm(form, type) {
     emailBody = `You have received a new quick booking request:\n\n` +
                 `Name: ${bookingData['quick-name']}\n` +
                 `Vehicle Type: ${bookingData['quick-car-type']}\n` +
+                `Rating: ⭐ ${randomRating}/5.0\n` +
                 `Pickup Date: ${bookingData['quick-pickup']}\n` +
                 `Return Date: ${bookingData['quick-dropoff']}\n` +
                 `Special Requests: ${bookingData['quick-special'] || 'None'}\n` +
@@ -332,12 +337,14 @@ function handleBookingForm(form, type) {
                      `*Email:* ${bookingData.email}\n` +
                      `*Phone:* ${bookingData.phone}\n` +
                      `*Vehicle:* ${getVehicleName(bookingData['car-selection'])}\n` +
+                     `*Rating:* ⭐ ${randomRating}/5.0\n` +
                      `*Pickup:* ${bookingData['pickup-date']} at ${bookingData['pickup-time']}\n` +
                      `*Return:* ${bookingData['return-date']} at ${bookingData['return-time']}\n` +
                      `*Location:* ${getLocationName(bookingData['pickup-location'])}\n` +
                      `*Driver Option:* ${bookingData['driver-option']}\n` +
                      `*Special Requests:* ${bookingData['special-requests'] || 'None'}\n\n` +
-                     `_Submitted via Extodus Car Hire Website_`;
+                     `_Submitted via Extodus Car Hire Website_\n\n` +
+                     `Please reply with your best offer for this booking.`;
     
     emailSubject = `New Booking - ${bookingData.name}`;
     emailBody = `You have received a new vehicle booking:\n\n` +
@@ -345,6 +352,7 @@ function handleBookingForm(form, type) {
                 `Email: ${bookingData.email}\n` +
                 `Phone: ${bookingData.phone}\n` +
                 `Vehicle: ${getVehicleName(bookingData['car-selection'])}\n` +
+                `Rating: ⭐ ${randomRating}/5.0\n` +
                 `Pickup: ${bookingData['pickup-date']} at ${bookingData['pickup-time']}\n` +
                 `Return: ${bookingData['return-date']} at ${bookingData['return-time']}\n` +
                 `Location: ${getLocationName(bookingData['pickup-location'])}\n` +
@@ -353,34 +361,85 @@ function handleBookingForm(form, type) {
                 `Timestamp: ${bookingData.timestamp}`;
   }
   
-  // Send to WhatsApp
-  const whatsappUrl = `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(whatsappMessage)}`;
-  window.open(whatsappUrl, '_blank');
-  
-  // Send email (using mailto as fallback)
-  const emailUrl = `mailto:${bookingEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-  window.open(emailUrl);
-  
-  // Show confirmation to user
-  showAlert('Booking Submitted', 'Your booking request has been sent successfully. We will contact you shortly to confirm your reservation.', 'success');
+  // Show WhatsApp continuation modal
+  showWhatsAppContinuation(whatsappMessage, emailSubject, emailBody);
   
   // Reset form
   form.reset();
 }
 
-// Helper function to get vehicle name from value
+// ===== Show WhatsApp Continuation Option =====
+function showWhatsAppContinuation(whatsappMessage, emailSubject, emailBody) {
+  const modal = document.createElement('div');
+  modal.style.position = 'fixed';
+  modal.style.top = '0';
+  modal.style.left = '0';
+  modal.style.width = '100%';
+  modal.style.height = '100%';
+  modal.style.backgroundColor = 'rgba(0,0,0,0.7)';
+  modal.style.display = 'flex';
+  modal.style.justifyContent = 'center';
+  modal.style.alignItems = 'center';
+  modal.style.zIndex = '1000';
+  
+  const content = document.createElement('div');
+  content.style.backgroundColor = 'white';
+  content.style.padding = '2rem';
+  content.style.borderRadius = '8px';
+  content.style.maxWidth = '500px';
+  content.style.width = '90%';
+  
+  content.innerHTML = `
+    <h2 style="margin-top: 0;">Booking Request Received!</h2>
+    <p>Your booking details have been submitted successfully.</p>
+    <p>Would you like to continue the negotiation on WhatsApp?</p>
+    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-direction: column;">
+      <button id="whatsappContinueBtn" style="padding: 0.75rem; background-color: #25D366; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Continue on WhatsApp
+      </button>
+      <button id="emailContinueBtn" style="padding: 0.75rem; background-color: #4285F4; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+        <i class="fas fa-envelope" style="margin-right: 8px;"></i> Continue via Email
+      </button>
+      <button id="closeModalBtn" style="padding: 0.75rem; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
+        Close
+      </button>
+    </div>
+  `;
+  
+  modal.appendChild(content);
+  document.body.appendChild(modal);
+  
+  document.getElementById('whatsappContinueBtn').addEventListener('click', () => {
+    window.open(`https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    document.body.removeChild(modal);
+    showAlert('Success!', 'Your booking request has been submitted successfully.', 'success');
+  });
+  
+  document.getElementById('emailContinueBtn').addEventListener('click', () => {
+    window.open(`mailto:${bookingEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`, '_blank');
+    document.body.removeChild(modal);
+    showAlert('Success!', 'Your booking request has been submitted successfully.', 'success');
+  });
+  
+  document.getElementById('closeModalBtn').addEventListener('click', () => {
+    document.body.removeChild(modal);
+    showAlert('Success!', 'Your booking request has been submitted successfully.', 'success');
+  });
+}
+
+// Helper function to get vehicle name from value (without prices)
 function getVehicleName(value) {
   const vehicles = {
-    'hilux': 'Toyota Hilux - ₦45,000/day',
-    'prado': 'Toyota Prado - ₦65,000/day',
-    'bumber': 'Toyota Bumber - ₦50,000/day',
-    'brabus': 'Brabus - ₦120,000/day',
-    'g-wagon': 'Mercedes G-Wagon - ₦150,000/day',
-    'escalade': 'Cadillac Escalade - ₦130,000/day',
-    'camry': 'Toyota Camry - ₦40,000/day',
-    'flex': 'Ford Flex - ₦60,000/day',
-    'sienna': 'Toyota Sienna - ₦55,000/day',
-    'coaster': 'Toyota Coaster - ₦80,000/day'
+    'hilux': 'Toyota Hilux',
+    'prado': 'Toyota Prado',
+    'bumber': 'Toyota Bumber',
+    'brabus': 'Brabus',
+    'g-wagon': 'Mercedes G-Wagon',
+    'escalade': 'Cadillac Escalade',
+    'camry': 'Toyota Camry',
+    'flex': 'Ford Flex',
+    'sienna': 'Toyota Sienna',
+    'coaster': 'Toyota Coaster'
   };
   return vehicles[value] || value;
 }
@@ -440,9 +499,6 @@ function handleNewsletterForm(form) {
     showAlert('Invalid Email', 'Please enter a valid email address.', 'error');
     return;
   }
-  
-  // In a real implementation, you would send this to your server
-  // For now, we'll just show a confirmation
   
   // Format messages
   const emailSubject = `New Newsletter Subscription`;
