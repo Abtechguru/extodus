@@ -3,6 +3,27 @@ const ownerWhatsApp = '2348123646242';
 const ownerEmail = 'tadebayor41@gmail.com';
 const bookingEmail = 'tadebayor41@gmail.com';
 
+// Vehicle and location data
+const vehicles = {
+  'hilux': 'Toyota Hilux',
+  'prado': 'Toyota Prado',
+  'bumber': 'Toyota Bumber',
+  'brabus': 'Brabus',
+  'g-wagon': 'Mercedes G-Wagon',
+  'escalade': 'Cadillac Escalade',
+  'camry': 'Toyota Camry',
+  'flex': 'Ford Flex',
+  'sienna': 'Toyota Sienna',
+  'coaster': 'Toyota Coaster'
+};
+
+const locations = {
+  'lagos-airport': 'Lagos Airport (LOS)',
+  'ibadan-city': 'Ibadan City Center',
+  'victoria-island': 'Victoria Island, Lagos',
+  'lekki': 'Lekki, Lagos',
+  'other': 'Other Location'
+};
 // ===== DOM Ready =====
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all functionality
@@ -13,7 +34,143 @@ document.addEventListener('DOMContentLoaded', function() {
   initTestimonials();
   initForms();
   initBackToTop();
+  initDatePickers(); // Add this line
 });
+
+// [Keep all your existing functions until initForms()]
+
+// ===== Form Handling =====
+function initForms() {
+  // Quick Booking Form
+  const quickBookingForm = document.getElementById('quickBookingForm');
+  if (quickBookingForm) {
+    quickBookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleBookingForm(this, 'quick');
+    });
+  }
+   // Main Booking Form
+  const mainBookingForm = document.getElementById('carBookingForm');
+  if (mainBookingForm) {
+    mainBookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleBookingForm(this, 'main');
+    });
+  }
+  
+  // Contact Form
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleContactForm(this);
+    });
+  }
+  // Newsletter Form
+  const newsletterForms = document.querySelectorAll('.newsletter-form, .footer-subscribe');
+  newsletterForms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      handleNewsletterForm(this);
+    });
+  });
+}
+
+// ===== Date Picker Initialization =====
+function initDatePickers() {
+  // Initialize flatpickr if available
+  if (typeof flatpickr !== 'undefined') {
+    flatpickr('.date-picker', {
+      minDate: 'today',
+      dateFormat: 'Y-m-d',
+      disableMobile: true
+    });
+    
+    flatpickr('.time-picker', {
+      enableTime: true,
+      noCalendar: true,
+      dateFormat: 'H:i',
+      disableMobile: true
+    });
+  }
+}
+
+// ===== Booking Form Handler =====
+function handleBookingForm(form, type) {
+  // Validate form first
+  if (!validateForm(form)) {
+    return;
+  }
+
+  const formData = new FormData(form);
+  const bookingData = {};
+  
+  // Collect form data
+  for (const [key, value] of formData.entries()) {
+    bookingData[key] = value;
+  }
+  
+  // Add timestamp
+  bookingData.timestamp = new Date().toLocaleString();
+  
+  // Generate random rating for the vehicle
+  const randomRating = (Math.random() * 2 + 3).toFixed(1); // Random rating between 3.0 and 5.0
+  
+  // Format messages
+  const { whatsappMessage, emailSubject, emailBody } = formatMessages(type, bookingData, randomRating);
+  
+  // Show continuation options
+  showContinuationModal(whatsappMessage, emailSubject, emailBody);
+  
+  // Send to server (optional)
+  sendToServer(bookingData, type);
+  
+  // Reset form
+  form.reset();
+}
+
+// ===== Form Validation =====
+function validateForm(form) {
+  let isValid = true;
+  const requiredFields = form.querySelectorAll('[required]');
+  
+  requiredFields.forEach(field => {
+    if (!field.value.trim()) {
+      field.classList.add('error');
+      isValid = false;
+      
+      // Remove error highlight after 2 seconds
+      setTimeout(() => {
+        field.classList.remove('error');
+      }, 2000);
+    }
+  });
+  
+  // Additional validation for email if present
+  const emailField = form.querySelector('input[type="email"]');
+  if (emailField && !validateEmail(emailField.value)) {
+    emailField.classList.add('error');
+    showAlert('Error', 'Please enter a valid email address.', 'error');
+    
+    setTimeout(() => {
+      emailField.classList.remove('error');
+    }, 2000);
+    
+    return false;
+  }
+  
+  if (!isValid) {
+    showAlert('Error', 'Please fill in all required fields.', 'error');
+    return false;
+  }
+  
+  return true;
+}
+
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
 
 // ===== Theme Toggle Functionality =====
 function initThemeToggle() {
@@ -249,183 +406,128 @@ function initTestimonials() {
   setInterval(nextTestimonial, 8000);
 }
 
-// ===== Form Handling =====
-function initForms() {
-  // Quick Booking Form
-  const quickBookingForm = document.getElementById('quickBookingForm');
-  if (quickBookingForm) {
-    quickBookingForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      handleBookingForm(this, 'quick');
-    });
-  }
-  
-  // Main Booking Form
-  const mainBookingForm = document.getElementById('carBookingForm');
-  if (mainBookingForm) {
-    mainBookingForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      handleBookingForm(this, 'main');
-    });
-  }
-  
-  // Contact Form
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      handleContactForm(this);
-    });
-  }
-  
-  // Newsletter Form
-  const newsletterForms = document.querySelectorAll('.newsletter-form, .footer-subscribe');
-  newsletterForms.forEach(form => {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      handleNewsletterForm(this);
-    });
-  });
-}
-
-// ===== Booking Form Handler =====
-function handleBookingForm(form, type) {
-  const formData = new FormData(form);
-  const bookingData = {};
-  
-  // Collect form data
-  for (const [key, value] of formData.entries()) {
-    bookingData[key] = value;
-  }
-  
-  // Add timestamp
-  bookingData.timestamp = new Date().toISOString();
-  
-  // Generate random rating for the vehicle
-  const randomRating = (Math.random() * 2 + 3).toFixed(1); // Random rating between 3.0 and 5.0
-  
-  // Format message based on form type
-  let whatsappMessage = '';
-  let emailSubject = '';
-  let emailBody = '';
+ 
+/ ===== Message Formatting =====
+function formatMessages(type, data, rating) {
+  let whatsappMessage, emailSubject, emailBody;
   
   if (type === 'quick') {
     whatsappMessage = `*New Quick Booking Request*\n\n` +
-                     `*Name:* ${bookingData['quick-name']}\n` +
-                     `*Vehicle Type:* ${bookingData['quick-car-type']}\n` +
-                     `*Rating:* ⭐ ${randomRating}/5.0\n` +
-                     `*Pickup Date:* ${bookingData['quick-pickup']}\n` +
-                     `*Return Date:* ${bookingData['quick-dropoff']}\n` +
-                     `*Special Requests:* ${bookingData['quick-special'] || 'None'}\n` +
-                     `*Message:* ${bookingData['quick-message'] || 'None'}\n\n` +
+                     `*Name:* ${data['quick-name']}\n` +
+                     `*Vehicle Type:* ${data['quick-car-type']}\n` +
+                     `*Rating:* ⭐ ${rating}/5.0\n` +
+                     `*Pickup Date:* ${data['quick-pickup']}\n` +
+                     `*Return Date:* ${data['quick-dropoff']}\n` +
+                     `*Special Requests:* ${data['quick-special'] || 'None'}\n` +
+                     `*Message:* ${data['quick-message'] || 'None'}\n\n` +
                      `_Submitted via Extodus Car Hire Website_`;
     
-    emailSubject = `Quick Booking Request - ${bookingData['quick-name']}`;
-    emailBody = `You have received a new quick booking request:\n\n` +
-                `Name: ${bookingData['quick-name']}\n` +
-                `Vehicle Type: ${bookingData['quick-car-type']}\n` +
-                `Rating: ⭐ ${randomRating}/5.0\n` +
-                `Pickup Date: ${bookingData['quick-pickup']}\n` +
-                `Return Date: ${bookingData['quick-dropoff']}\n` +
-                `Special Requests: ${bookingData['quick-special'] || 'None'}\n` +
-                `Message: ${bookingData['quick-message'] || 'None'}\n\n` +
-                `Timestamp: ${bookingData.timestamp}`;
+    emailSubject = `Quick Booking Request - ${data['quick-name']}`;
+    emailBody = `<p>You have received a new quick booking request:</p>
+                <table>
+                  <tr><td><strong>Name:</strong></td><td>${data['quick-name']}</td></tr>
+                  <tr><td><strong>Vehicle Type:</strong></td><td>${data['quick-car-type']}</td></tr>
+                  <tr><td><strong>Rating:</strong></td><td>⭐ ${rating}/5.0</td></tr>
+                  <tr><td><strong>Pickup Date:</strong></td><td>${data['quick-pickup']}</td></tr>
+                  <tr><td><strong>Return Date:</strong></td><td>${data['quick-dropoff']}</td></tr>
+                  <tr><td><strong>Special Requests:</strong></td><td>${data['quick-special'] || 'None'}</td></tr>
+                  <tr><td><strong>Message:</strong></td><td>${data['quick-message'] || 'None'}</td></tr>
+                </table>
+                <p>Timestamp: ${data.timestamp}</p>`;
   } else {
-    // Main booking form
     whatsappMessage = `*New Vehicle Booking*\n\n` +
-                     `*Name:* ${bookingData.name}\n` +
-                     `*Email:* ${bookingData.email}\n` +
-                     `*Phone:* ${bookingData.phone}\n` +
-                     `*Vehicle:* ${getVehicleName(bookingData['car-selection'])}\n` +
-                     `*Rating:* ⭐ ${randomRating}/5.0\n` +
-                     `*Pickup:* ${bookingData['pickup-date']} at ${bookingData['pickup-time']}\n` +
-                     `*Return:* ${bookingData['return-date']} at ${bookingData['return-time']}\n` +
-                     `*Location:* ${getLocationName(bookingData['pickup-location'])}\n` +
-                     `*Driver Option:* ${bookingData['driver-option']}\n` +
-                     `*Special Requests:* ${bookingData['special-requests'] || 'None'}\n\n` +
+                     `*Name:* ${data.name}\n` +
+                     `*Email:* ${data.email}\n` +
+                     `*Phone:* ${data.phone}\n` +
+                     `*Vehicle:* ${getVehicleName(data['car-selection'])}\n` +
+                     `*Rating:* ⭐ ${rating}/5.0\n` +
+                     `*Pickup:* ${data['pickup-date']} at ${data['pickup-time']}\n` +
+                     `*Return:* ${data['return-date']} at ${data['return-time']}\n` +
+                     `*Location:* ${getLocationName(data['pickup-location'])}\n` +
+                     `*Driver Option:* ${data['driver-option']}\n` +
+                     `*Special Requests:* ${data['special-requests'] || 'None'}\n\n` +
                      `_Submitted via Extodus Car Hire Website_\n\n` +
                      `Please reply with your best offer for this booking.`;
     
-    emailSubject = `New Booking - ${bookingData.name}`;
-    emailBody = `You have received a new vehicle booking:\n\n` +
-                `Name: ${bookingData.name}\n` +
-                `Email: ${bookingData.email}\n` +
-                `Phone: ${bookingData.phone}\n` +
-                `Vehicle: ${getVehicleName(bookingData['car-selection'])}\n` +
-                `Rating: ⭐ ${randomRating}/5.0\n` +
-                `Pickup: ${bookingData['pickup-date']} at ${bookingData['pickup-time']}\n` +
-                `Return: ${bookingData['return-date']} at ${bookingData['return-time']}\n` +
-                `Location: ${getLocationName(bookingData['pickup-location'])}\n` +
-                `Driver Option: ${bookingData['driver-option']}\n` +
-                `Special Requests: ${bookingData['special-requests'] || 'None'}\n\n` +
-                `Timestamp: ${bookingData.timestamp}`;
+    emailSubject = `New Booking - ${data.name}`;
+    emailBody = `<p>You have received a new vehicle booking:</p>
+                <table>
+                  <tr><td><strong>Name:</strong></td><td>${data.name}</td></tr>
+                  <tr><td><strong>Email:</strong></td><td>${data.email}</td></tr>
+                  <tr><td><strong>Phone:</strong></td><td>${data.phone}</td></tr>
+                  <tr><td><strong>Vehicle:</strong></td><td>${getVehicleName(data['car-selection'])}</td></tr>
+                  <tr><td><strong>Rating:</strong></td><td>⭐ ${rating}/5.0</td></tr>
+                  <tr><td><strong>Pickup:</strong></td><td>${data['pickup-date']} at ${data['pickup-time']}</td></tr>
+                  <tr><td><strong>Return:</strong></td><td>${data['return-date']} at ${data['return-time']}</td></tr>
+                  <tr><td><strong>Location:</strong></td><td>${getLocationName(data['pickup-location'])}</td></tr>
+                  <tr><td><strong>Driver Option:</strong></td><td>${data['driver-option']}</td></tr>
+                  <tr><td><strong>Special Requests:</strong></td><td>${data['special-requests'] || 'None'}</td></tr>
+                </table>
+                <p>Timestamp: ${data.timestamp}</p>`;
   }
   
-  // Show WhatsApp continuation modal
-  showWhatsAppContinuation(whatsappMessage, emailSubject, emailBody);
-  
-  // Reset form
-  form.reset();
+  return { whatsappMessage, emailSubject, emailBody };
 }
 
-// ===== Show WhatsApp Continuation Option =====
-function showWhatsAppContinuation(whatsappMessage, emailSubject, emailBody) {
+// ===== Continuation Modal =====
+function showContinuationModal(whatsappMessage, emailSubject, emailBody) {
   const modal = document.createElement('div');
-  modal.style.position = 'fixed';
-  modal.style.top = '0';
-  modal.style.left = '0';
-  modal.style.width = '100%';
-  modal.style.height = '100%';
-  modal.style.backgroundColor = 'rgba(0,0,0,0.7)';
-  modal.style.display = 'flex';
-  modal.style.justifyContent = 'center';
-  modal.style.alignItems = 'center';
-  modal.style.zIndex = '1000';
-  
-  const content = document.createElement('div');
-  content.style.backgroundColor = 'white';
-  content.style.padding = '2rem';
-  content.style.borderRadius = '8px';
-  content.style.maxWidth = '500px';
-  content.style.width = '90%';
-  
-  content.innerHTML = `
-    <h2 style="margin-top: 0;">Booking Request Received!</h2>
-    <p>Your booking details have been submitted successfully.</p>
-    <p>Would you like to continue the negotiation on WhatsApp?</p>
-    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-direction: column;">
-      <button id="whatsappContinueBtn" style="padding: 0.75rem; background-color: #25D366; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
-        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Continue on WhatsApp
-      </button>
-      <button id="emailContinueBtn" style="padding: 0.75rem; background-color: #4285F4; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
-        <i class="fas fa-envelope" style="margin-right: 8px;"></i> Continue via Email
-      </button>
-      <button id="closeModalBtn" style="padding: 0.75rem; background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
-        Close
-      </button>
+  modal.className = 'booking-modal';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h2>Booking Request Received!</h2>
+      <p>Your booking details have been submitted successfully.</p>
+      <p>Would you like to continue the negotiation?</p>
+      <div class="modal-buttons">
+        <button id="whatsappContinueBtn" class="whatsapp-btn">
+          <i class="fab fa-whatsapp"></i> Continue on WhatsApp
+        </button>
+        <button id="emailContinueBtn" class="email-btn">
+          <i class="fas fa-envelope"></i> Continue via Email
+        </button>
+        <button id="closeModalBtn" class="close-btn">
+          Close
+        </button>
+      </div>
     </div>
   `;
   
-  modal.appendChild(content);
   document.body.appendChild(modal);
   
+  // Add event listeners
   document.getElementById('whatsappContinueBtn').addEventListener('click', () => {
     window.open(`https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-    document.body.removeChild(modal);
+    closeModal(modal);
     showAlert('Success!', 'Your booking request has been submitted successfully.', 'success');
   });
   
   document.getElementById('emailContinueBtn').addEventListener('click', () => {
-    window.open(`mailto:${bookingEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`, '_blank');
-    document.body.removeChild(modal);
+    const mailtoLink = `mailto:${bookingEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    window.open(mailtoLink, '_blank');
+    closeModal(modal);
     showAlert('Success!', 'Your booking request has been submitted successfully.', 'success');
   });
   
   document.getElementById('closeModalBtn').addEventListener('click', () => {
-    document.body.removeChild(modal);
+    closeModal(modal);
     showAlert('Success!', 'Your booking request has been submitted successfully.', 'success');
   });
+  
+  // Close modal when clicking outside
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal(modal);
+    }
+  });
 }
+
+function closeModal(modal) {
+  modal.style.opacity = '0';
+  setTimeout(() => {
+    document.body.removeChild(modal);
+  }, 300);
+}
+
 
 // Helper function to get vehicle name from value (without prices)
 function getVehicleName(value) {
